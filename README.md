@@ -1,17 +1,47 @@
 [//]: # (Image References)
 
-[image1]: ./images/sample_dog_output.png "Sample Output"
+[image1]: ./images/test1.PNG "test1"
 [image2]: ./images/vgg16_model.png "VGG-16 Model Keras Layers"
 [image3]: ./images/vgg16_model_draw.png "VGG16 Model Figure"
+[image4]: ./images/test2.PNG "test2"
+[image5]: ./images/test3.PNG "test3"
 
 
 ## Project Overview
 
-Welcome to the Convolutional Neural Networks (CNN) project in the AI Nanodegree! In this project, you will learn how to build a pipeline that can be used within a web or mobile app to process real-world, user-supplied images.  Given an image of a dog, your algorithm will identify an estimate of the canine’s breed.  If supplied an image of a human, the code will identify the resembling dog breed.  
+The problem of Image Classification lies as follows: Due to a set of images that are all labeled with a particular class we are required to predict these classes for a new set of test images and measure the accuracy of the predictions. There are a variety of challenges associated with this task, including image deformation, scale variation, viewpoint variation, illumination conditions etc.
+With these image classification challenges known, deep learning is able to make great strides on this task.
 
-![Sample Output][image1]
+In this project, we are building a Convolutional Neural Network classifier using dog breed datasets to detect whether a picture has a human or a dog in it. In addition, in case of detecting dog in the image, it will tell us the breed of that dog with a 79.6651% of accuracy.
 
-Along with exploring state-of-the-art CNN models for classification, you will make important design decisions about the user experience for your app.  Our goal is that by completing this lab, you understand the challenges involved in piecing together a series of models designed to perform various tasks in a data processing pipeline.  Each model has its strengths and weaknesses, and engineering a real-world application often involves solving many problems without a perfect answer.  Your imperfect solution will nonetheless create a fun user experience!
+## Libraries
+from sklearn.datasets import load_files       
+from keras.utils import np_utils
+import numpy as np
+from glob import glob
+import random
+import cv2                
+import matplotlib.pyplot as plt   
+from keras.applications.resnet50 import ResNet50
+from keras.preprocessing import image                  
+from tqdm import tqdm
+from keras.applications.resnet50 import preprocess_input, decode_predictions
+from PIL import ImageFile
+from keras.layers import Conv2D, MaxPooling2D, GlobalAveragePooling2D
+from keras.layers import Dropout, Flatten, Dense
+from keras.models import Sequential
+from keras.callbacks import ModelCheckpoint
+from extract_bottleneck_features import *
+from PIL import Image
+import os
+
+## Restuls 
+we test our algorithm on different images existing in the computer to see whether an image that was provided is of a human, a dog or neither. Also, to see whether it correctly predicts the breed of the dog or not.
+Below are samples of testing the model.
+
+![test1][image1]
+![test2][image4]
+![test3][image5]
 
 ## Project Instructions
 
